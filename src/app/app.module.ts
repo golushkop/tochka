@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { routing } from './common/app.routes';
+import {SharedModule} from './modules/shared/shared.module';
 
 
 @NgModule({
@@ -10,9 +12,15 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    SharedModule.forRoot(),
+    BrowserModule,
+    routing,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

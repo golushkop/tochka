@@ -1,0 +1,19 @@
+<div class="transaction_block" (click)="clickOpen()">
+  <div>От: {{current_transaction.source}}</div>
+  <div>
+    <span *ngIf="current_transaction.positive">Приход: +</span>
+    <span *ngIf="!current_transaction.positive">Расход: -</span>
+    <span [ngClass]="{'color_success': current_transaction.positive, 'color_danger': !current_transaction.positive}">
+      {{current_transaction.amount}} {{current_transaction.currency}}
+    </span>
+  </div>
+  <div>Дата транзакции: {{current_transaction.date | humanizeDate}}</div>
+  <div class="max-width" *ngIf="current_transaction.opened">
+    <div>{{current_transaction.description}}</div>
+    <div class="card_button">
+      <button class="button danger_button material-icons"
+              (click)="deleteTransaction($event)"
+              [disabled]="current_transaction.viewed">delete_forever</button>
+    </div>
+  </div>
+</div>

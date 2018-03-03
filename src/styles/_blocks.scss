@@ -1,0 +1,33 @@
+.card {
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+  padding: 15px;
+  position: relative;
+  margin-top: 10px;
+}
+.card_button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.news_block {
+  @extend .card;
+  padding: 15px 15px 50px;
+  background-color: $news_color;
+}
+
+.transaction_block {
+  @extend .card;
+  padding: 15px 15px 50px;
+  background-color: $transaction_color;
+}
+.input_block {
+  max-width: 500px;
+  margin: auto;
+  div {
+    margin-top: 10px;
+  }
+  label {
+    width: 50%;
+  }
+}

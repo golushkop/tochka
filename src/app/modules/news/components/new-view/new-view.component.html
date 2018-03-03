@@ -1,0 +1,15 @@
+<div class="news_block" (click)="clickOpen()">
+  <div class="max-width">
+    <div class="max-width flex"><div class="margin-auto">{{current_new_post.header}}</div></div>
+    <div>Дата публикации: {{current_new_post.date | humanizeDate}}</div>
+  </div>
+  <!--<div *ngIf="current_new_post.viewed">Already viewed</div>-->
+  <div *ngIf="current_new_post.opened">
+    <div>{{current_new_post.description}}</div>
+    <div class="card_button">
+      <button class="button primary_button material-icons"
+              (click)="markAsRead($event)"
+              [disabled]="current_new_post.viewed">thumb_up</button>
+    </div>
+  </div>
+</div>

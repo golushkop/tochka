@@ -1,0 +1,31 @@
+<div class="flex justify-between max-width">
+  <div>
+    <button class="button primary_button margin-right-10" [ngClass]="{'success_button': activeRoute === 'news'}" (click)="goToActive()">Активные</button>
+    <button class="button primary_button"
+          [ngClass]="{'success_button': activeRoute === 'edit'}"
+          (click)="goToEdit()">Добавить</button>
+  </div>
+  <div>
+    <button class="button primary_button material-icons" (click)="_data_storage.get_events()">autorenew</button>
+  </div>
+
+</div>
+<div class="flex margin-top-10" *ngIf="activeRoute === 'news'">
+  <button class="button primary_button margin-right-10" (click)="sortByData()">Дата</button>
+  <div class="button primary_button no_padding">
+    <select [(ngModel)]="selectedType" (change)="typeFilterChanged($event)" >
+      <option [ngValue]="undefined" selected>Все типы</option>
+      <ng-container *ngFor="let eventType of _data_storage.eventsTypes">
+        <option>{{eventType}}</option>
+      </ng-container>
+    </select>
+  </div>
+</div>
+<div class="flex margin-top-10" *ngIf="activeRoute === 'edit'">
+  <button class="button margin-right-10 primary_button"
+          [ngClass]="{'success_button': create_val === 'news'}"
+          (click)="createNew('news')">Новость</button>
+  <button class="button primary_button"
+          [ngClass]="{'success_button': create_val === 'transaction'}"
+          (click)="createNew('transaction')">Транзакцию</button>
+</div>

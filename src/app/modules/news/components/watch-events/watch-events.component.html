@@ -1,0 +1,12 @@
+<div *ngIf="!load" class="container">
+  <app-header></app-header>
+  <div>
+    <ng-container *ngFor="let event of _data_storage._events_list">
+      <app-new-view [current_new_post]="event" *ngIf="event.type === 'new' && event.display"></app-new-view>
+      <app-trransaction-view
+        (changeOn)="_data_storage.delete_from_event_list(event)"
+        *ngIf="event.type === 'transaction' && event.display"
+        [current_transaction]="event"></app-trransaction-view>
+    </ng-container>
+  </div>
+</div>

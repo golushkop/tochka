@@ -1,0 +1,53 @@
+<div class="container">
+
+  <app-header (create)="createOptionChanged($event)"></app-header>
+  <div class="flex column-diretion input_block" *ngIf="_create === 'news'">
+    <div class="flex"><div class="margin-auto">Создание новости</div></div>
+    <div class="flex justify-between">
+      <label>Заголовок</label>
+      <input type="text" [(ngModel)]="new_event['header']"/>
+    </div>
+    <div class="flex justify-between">
+      <label>Описание</label>
+      <textarea [(ngModel)]="new_event['description']"></textarea>
+    </div>
+    <div class="flex justify-between">
+      <label>Дата</label>
+      <input type="date" [(ngModel)]="new_event['date']">
+    </div>
+    <div class="flex"><button class="button success_button margin-auto" (click)="addNewPost('new')">Добавить</button></div>
+  </div>
+
+  <div class="flex column-diretion input_block" *ngIf="_create === 'transaction'">
+    <div class="flex"><div class="margin-auto">Создание транзакции</div></div>
+    <div class="flex justify-between">
+      <label>Сумма транзакции</label>
+      <input type="number" [(ngModel)]="new_event['amount']"/>
+    </div>
+    <div class="flex justify-between">
+      <label>Описание</label>
+      <textarea [(ngModel)]="new_event['description']"></textarea>
+    </div>
+    <div class="flex justify-between">
+      <label>Дата</label>
+      <input type="date" [(ngModel)]="new_event['date']">
+    </div>
+    <div class="flex justify-between">
+      <label>Валюта</label>
+      <input type="text" [(ngModel)]="new_event['currency']">
+    </div>
+    <div class="flex justify-between">
+      <label>От кого</label>
+      <input type="text" [(ngModel)]="new_event['source']">
+    </div>
+    <div class="flex justify-between">
+      <label>Тип транзакции</label>
+      <select [(ngModel)]="new_event['positive']">
+        <option [value]="true">Приход</option>
+        <option [value]="false">Расход</option>
+      </select>
+    </div>
+    <div class="flex"><button class="button success_button margin-auto" (click)="addNewPost('transaction')">Добавить</button></div>
+  </div>
+
+</div>
